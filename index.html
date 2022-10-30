@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta width="device-width, initial-scale=1.0">
+        <title>Snake|Water|Gun</title>
+
+        <!--Custom CSS-->
+        <link rel="stylesheet" type="text/css" href="SWGgame.css">
+    </head>
+
+    <body>
+        <div class="colors">
+            <div><span></span></div>
+            <div><span></span></div>
+            <div><span></span></div>
+            <div><span></span></div>
+        </div>
+        <div class="wrapper">
+            <div class="game-console">
+                <h1>Snake Water Gun</h1>
+
+                <div class="user-selection">
+                    <label>User Selection:-</label>
+                    <select class="user-choice">
+                        <option>Snake</option>
+                        <option>Water</option>
+                        <option>Gun</option>
+                    </select>
+                </div>
+
+                <div class="system-selection">
+                    <label>System Selection:-</label>
+                    <span class="system-choice">---</span>
+                </div>
+                <div class="results">
+                    <span>Let's Start</span>
+                </div>
+                <button onclick="play()">Play</button>
+            </div>
+        </div> 
+        
+        <script>
+            
+            const play = () =>{
+            
+                const system = document.querySelector(".system-choice"); 
+                let user = document.querySelector(".user-choice").value;
+                let results = document.querySelector(".results span");
+
+                //let randomNum = Math.floor(Math.random() * 10);
+                //console.log(randomNum);
+
+                function rm(min, max){
+                    return Math.floor(Math.random() * (max - min) + min);
+                }
+                //console.log(rm(0,2));
+                const randomOption =  rm(0, 3);
+                let arr = ["Snake", "Water", "Gun"];
+                let systemOption = arr[randomOption];
+                system.innerHTML = systemOption;
+                //console.log(userOption);
+                
+                if(user == "Snake"){
+                    if(systemOption == "Snake"){
+                        results.innerHTML = "Game Tie &#128400";
+                    } else if(systemOption == "Water"){
+                        results.innerHTML = "Better Luck Next Time &#128079";
+                    } else if(systemOption == "Gun"){
+                        results.innerHTML = "Congratulations &#127881";
+                    }
+                } else if(user == "Water"){
+                    if(systemOption == "Snake"){
+                        results.innerHTML = "Congratulations &#127881";
+                    } else if(systemOption == "Water"){
+                        results.innerHTML = "Game Tie &#128400";
+                    } else{
+                        results.innerHTML = "Better Luck Next Time &#128079";
+                    }
+                } else if(user == "Gun"){
+                    if(systemOption == "Snake"){
+                        results.innerHTML = "Better Luck Next Time &#128079";
+                    } else if(systemOption == "Water"){
+                        results.innerHTML = "Congratulations &#127881";
+                    } else{
+                        results.innerHTML = "Game Tie &#128400";
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>
